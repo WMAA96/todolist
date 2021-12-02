@@ -2,13 +2,35 @@
 <html lang="en">
 <head>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <div id="content">
+    <div id="container">
+        <div id="sideProjects">
+            <h1>Projects:</h1>
+            <p>Default</p>
+            <button id="newProject">New Project</button>
+        </div>
+
+        <div id="content">
+            <h1>Todo List:</h1>
+            <button id ="newTodo">New Todo</button>
+            <form id="addForm">
+                <label for="title">title:</label><br>
+                <input class ="field" type="text" id="title" name="title"><br>
+
+                <label for="description">author name:</label><br>
+                <input class ="field" type="text" id="description" name="description"><br>
+
+                <input id="submit" type="button" value="Submit!">
+
+            </form>
+
+        </div>
         
     </div>
     

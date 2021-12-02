@@ -1,19 +1,14 @@
 import Todo from "./todo";
 import Project from "./project";
-
-
-window.Test = new Project("DSF");
-Test.name;
+import { setup } from "./dom"
 
 
 
+setup();
 
 
 
-function myfunction() {
-  
-    
-    
-}
+
+
 
 
