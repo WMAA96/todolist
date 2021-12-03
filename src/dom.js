@@ -1,31 +1,46 @@
-import Todo from "./todo";
-import { createTodo } from "./logic";
+
+import { createTodo, createProject } from "./logic";
 
 
 function setup() {
-    const createTodo = document.getElementById("newTodo");
+
+    // Add a cancel button later
+    const newTodo = document.getElementById("newTodo");
     const form = document.getElementById("addForm");
+    const newProject = document.getElementById("newProject")
+    const projectForm = document.getElementById("addProject");
 
-    createTodo.addEventListener("click", showForm);
+    // setup Projects
 
-    submit.addEventListener("click", submitTodo);  
+    newProject.addEventListener("click", () => {
+        projectForm.style.display = "block";
+    });
+
+    projectSubmit.addEventListener("click", () => {
+        createProject(projectName.value);
+        projectName.value = "";
+
+    });
+
+    //setup Todos
+
+    newTodo.addEventListener("click", () => {
+        form.style.display = "block";
+    });
+
+    submit.addEventListener("click", () => {
+        let title = document.getElementById("title");
+        let description = document.getElementById("description");
+        form.style.display = "none";
+        
+
+        createTodo(title.value, description.value);
+        title.value = description.value = "";
+
+    });  
 }
 
 
-function submitTodo() {
-    let title = document.getElementById("title").value;
-    let description = document.getElementById("description").value;
-
-    createTodo(title, description);
-    
-    
-}
-
-function showForm() {
-    const form = document.getElementById("addForm");
-    form.style.display = "block";
-
-}
 
 
 export {setup};

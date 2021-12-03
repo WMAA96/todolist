@@ -1,3 +1,4 @@
+import Project from "./project";
 import Todo from "./todo";
 
 function createTodo(title, description) {
@@ -7,7 +8,12 @@ function createTodo(title, description) {
 
 }
 
+function createProject(name) {
+    let project = new Project(name);
+    console.log(project);
+}
 
 
 
-export {createTodo};
+
+export {createTodo, createProject};
