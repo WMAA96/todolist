@@ -1,5 +1,6 @@
 import Project from "./project";
 import Todo from "./todo";
+import {appendProject} from "./dom"
 
 function createTodo(title, description) {
 
@@ -8,9 +9,12 @@ function createTodo(title, description) {
 
 }
 
-function createProject(name) {
-    let project = new Project(name);
-    console.log(project);
+function createProject(pname) {
+
+    let project = new Project(pname);
+    appendProject(project);
+
+    
 }
 
 

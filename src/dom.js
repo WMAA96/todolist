@@ -18,6 +18,7 @@ function setup() {
 
     projectSubmit.addEventListener("click", () => {
         createProject(projectName.value);
+        projectForm.style.display = "none";
         projectName.value = "";
 
     });
@@ -38,9 +39,38 @@ function setup() {
         title.value = description.value = "";
 
     });  
+    
+}
+
+
+
+const appendProject = (project) => {
+    let li = document.createElement("li");
+    let removeProject = document.createElement("button")
+
+    removeProject.append("X");
+
+    li.addEventListener("click", projectClick);
+
+
+    removeProject.addEventListener("click", (e) => {
+        li.removeEventListener("click", projectClick);
+        e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+    })
+
+    li.append(project.name);
+    li.appendChild(removeProject);
+
+    document.getElementById("projectList").appendChild(li);
 }
 
 
 
 
-export {setup};
+function projectClick(e) {
+    let currentProject = document.getElementById("currentProject");
+    currentProject.textContent = e.target.textContent.substring(0, e.target.textContent.length - 1);
+    
+}
+
+export {setup, appendProject};
