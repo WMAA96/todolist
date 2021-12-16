@@ -10,6 +10,12 @@ function setup() {
     const newProject = document.getElementById("newProject")
     const projectForm = document.getElementById("addProject");
 
+    // setup TodoList / Projects holder
+
+    
+    
+    
+
     // setup Projects
 
     newProject.addEventListener("click", () => {
@@ -32,16 +38,19 @@ function setup() {
     submit.addEventListener("click", () => {
         let title = document.getElementById("title");
         let description = document.getElementById("description");
+        let currentProject = document.getElementById("currentProject");
+
         form.style.display = "none";
         
+        
 
-        createTodo(title.value, description.value);
+        createTodo(title.value, description.value, currentProject.textContent);
         title.value = description.value = "";
+        
 
     });  
     
 }
-
 
 
 const appendProject = (project) => {
@@ -65,12 +74,38 @@ const appendProject = (project) => {
 }
 
 
-
+// When user clicks on a project, changes the current project.
 
 function projectClick(e) {
     let currentProject = document.getElementById("currentProject");
     currentProject.textContent = e.target.textContent.substring(0, e.target.textContent.length - 1);
     
+    
 }
 
-export {setup, appendProject};
+
+const appendTodos = (todo) => {
+    let li = document.createElement("li");
+    let removeTodo = document.createElement("button")
+
+    removeTodo.append("X");
+
+    removeTodo.addEventListener("click", (e) => {
+        e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+    })
+
+    li.append(todo.title);
+    li.appendChild(removeTodo);
+
+    document.getElementById("currentTodos").appendChild(li);
+
+    
+
+
+
+}
+
+createProject("TEST")
+createProject("TESTING2")
+
+export {setup, appendProject, appendTodos};

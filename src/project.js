@@ -3,12 +3,13 @@
 export default class Project {
     constructor(name) {
         this.name = name;
+        this.tasks = [];
         
     }
 
 
     get name() {
-        console.log("boom");
+        
         return this._name;
     }
 
@@ -20,7 +21,12 @@ export default class Project {
         this._name = value;
     }
 
+    addTask(newTask) {
+        this.tasks.push(newTask);
+    }
+
 }
+
 
 
 
