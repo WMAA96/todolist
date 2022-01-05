@@ -1,5 +1,5 @@
 
-import { createTodo, createProject, projectTodos } from "./logic";
+import { createTodo, createProject, projectTodos, deleteProject, deleteTodo } from "./logic";
 
 
 function setup() {
@@ -63,8 +63,10 @@ const appendProject = (project) => {
 
 
     removeProject.addEventListener("click", (e) => {
+        deleteProject(li.textContent.substring(0, li.textContent.length - 1));
         li.removeEventListener("click", projectClick);
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+        
     })
 
     li.append(project.name);
@@ -94,10 +96,12 @@ function projectClick(e) {
 const appendTodos = (todo) => {
     let li = document.createElement("li");
     let removeTodo = document.createElement("button")
+    let pname = document.getElementById("currentProject");
 
     removeTodo.append("X");
 
     removeTodo.addEventListener("click", (e) => {
+        deleteTodo(pname.textContent, li.textContent.substring(0, li.textContent.length - 1));
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
     })
 
