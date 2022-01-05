@@ -1,5 +1,5 @@
 
-import { createTodo, createProject } from "./logic";
+import { createTodo, createProject, projectTodos } from "./logic";
 
 
 function setup() {
@@ -79,6 +79,13 @@ const appendProject = (project) => {
 function projectClick(e) {
     let currentProject = document.getElementById("currentProject");
     currentProject.textContent = e.target.textContent.substring(0, e.target.textContent.length - 1);
+
+    let element = document.getElementById("todoHolder");
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+    projectTodos(currentProject.textContent);
+    
     
     
 }
@@ -97,7 +104,7 @@ const appendTodos = (todo) => {
     li.append(todo.title);
     li.appendChild(removeTodo);
 
-    document.getElementById("currentTodos").appendChild(li);
+    document.getElementById("todoHolder").appendChild(li);
 
     
 
