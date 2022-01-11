@@ -2,13 +2,15 @@ import Project from "./project";
 import Todo from "./todo";
 import {appendProject, appendTodos} from "./dom"
 import TodoList from "./TodoList";
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 
 let projectHolder = [];
 
+format(new Date(2022,0,1), 'dd/MM/yyyy');
 
-function createTodo(title, description, currentProject) {
+function createTodo(title, description, duedate, currentProject) {
 
-    let todo = new Todo(title, description);
+    let todo = new Todo(title, description, duedate);
     
     console.log(currentProject);
     

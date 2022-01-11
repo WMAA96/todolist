@@ -38,13 +38,14 @@ function setup() {
     submit.addEventListener("click", () => {
         let title = document.getElementById("title");
         let description = document.getElementById("description");
+        let duedate = document.getElementById("duedate");
         let currentProject = document.getElementById("currentProject");
 
         form.style.display = "none";
         
         
 
-        createTodo(title.value, description.value, currentProject.textContent);
+        createTodo(title.value, description.value, duedate.value, currentProject.textContent);
         title.value = description.value = "";
         
 
