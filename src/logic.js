@@ -60,11 +60,12 @@ function deleteProject(pname) {
 
 
 function deleteTodo(pname, tname) {
+    console.log(pname, tname[0]);
     
     for (let i = 0; i< projectHolder.length; i++) {
         if(projectHolder[i].name === pname) {
             for (let j = 0; j< projectHolder[i].tasks.length; j++) {
-                if(projectHolder[i].tasks[j].title === tname) {
+                if(projectHolder[i].tasks[j].title === tname[0]) {
                    projectHolder[i].tasks.splice(j, 1);
                     
                 }

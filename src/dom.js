@@ -102,11 +102,12 @@ const appendTodos = (todo) => {
     removeTodo.append("X");
 
     removeTodo.addEventListener("click", (e) => {
-        deleteTodo(pname.textContent, li.textContent.substring(0, li.textContent.length - 1));
+        
+        deleteTodo(pname.textContent, li.textContent.split(" due on"));
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
     })
 
-    li.append(todo.title);
+    li.append(todo.title + " due on " + todo.duedate);
     li.appendChild(removeTodo);
 
     document.getElementById("todoHolder").appendChild(li);
