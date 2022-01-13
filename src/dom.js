@@ -1,8 +1,10 @@
 
-import { createTodo, createProject, projectTodos, deleteProject, deleteTodo } from "./logic";
+import { createTodo, createProject, projectTodos, deleteProject, deleteTodo, loadProject } from "./logic";
 
 
 function setup() {
+
+    loadProject();
 
     // Add a cancel button later
     const newTodo = document.getElementById("newTodo");
@@ -118,7 +120,6 @@ const appendTodos = (todo) => {
 
 }
 
-createProject("TEST")
-createProject("TESTING2")
+
 
 export {setup, appendProject, appendTodos};

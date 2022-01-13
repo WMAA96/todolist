@@ -32,6 +32,9 @@ function createProject(pname) {
     projectHolder.push(project);
     console.log(projectHolder);
 
+
+    saveProject(project);
+
     appendProject(project);
     
 
@@ -76,6 +79,23 @@ function deleteTodo(pname, tname) {
     }
 }
 
+function saveProject() {
+
+    
+    localStorage.setItem("Project", JSON.stringify(projectHolder));
+
+}
+
+function loadProject() {
+    let storedProjects = JSON.parse(localStorage.getItem("Project"));
+    
+
+    
+    storedProjects.forEach(project => createProject(project._name));
 
 
-export {createTodo, createProject, projectTodos, deleteProject, deleteTodo};
+}
+
+
+
+export {createTodo, createProject, projectTodos, deleteProject, deleteTodo, loadProject};
