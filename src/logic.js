@@ -8,20 +8,25 @@ let projectHolder = [];
 
 format(new Date(2022,0,1), 'dd/MM/yyyy');
 
-function createTodo(title, description, duedate, currentProject) {
+function createTodo(title, description, duedate, currentProject, toAppend) {
 
     let todo = new Todo(title, description, duedate);
     
-    console.log(currentProject);
+    
     
     let result = projectHolder.filter(x => x.name === currentProject);
      
     
     result[0].addTask(todo);
-    console.log(projectHolder);
     
+    console.log(currentProject);
+    
+    saveProject();
 
-    appendTodos(todo);
+    if(toAppend === undefined) {
+        appendTodos(todo);
+    }
+    
 
 
 }
@@ -30,7 +35,7 @@ function createProject(pname) {
 
     let project = new Project(pname);
     projectHolder.push(project);
-    console.log(projectHolder);
+    
 
 
     saveProject(project);
@@ -59,6 +64,7 @@ function deleteProject(pname) {
     
     projectHolder = projectHolder.filter(x => x.name !== pname);
     console.log(projectHolder);
+    saveProject();
 }
 
 
@@ -86,13 +92,29 @@ function saveProject() {
 
 }
 
+
+
 function loadProject() {
-    let storedProjects = JSON.parse(localStorage.getItem("Project"));
-    
 
-    
-    storedProjects.forEach(project => createProject(project._name));
+    if(JSON.parse(localStorage.getItem("Project")) != null) {
+        let storedProjects = JSON.parse(localStorage.getItem("Project"));
 
+        console.log(storedProjects)
+
+        storedProjects.forEach(project =>  createProject(project._name));
+
+        for (let i = 0; i< storedProjects.length; i++){
+           if(storedProjects[i].tasks.length > 0) {
+               for (let j = 0; j< storedProjects[i].tasks.length; j++) {
+                   
+                   createTodo(storedProjects[i].tasks[j].title, storedProjects[i].tasks[j].description, storedProjects[i].tasks[j]._duedate, storedProjects[i]._name, "No");
+               }
+           }
+        }
+
+        
+    }
+    
 
 }
 

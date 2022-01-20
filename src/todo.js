@@ -13,7 +13,7 @@ export default class Todo {
         }
 
         set duedate(value) {
-            console.log("YUP");
+            
             value = format(new Date(value), "dd,MMM,yyyy");
             this._duedate = value;
         }

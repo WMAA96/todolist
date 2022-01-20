@@ -97,9 +97,14 @@ function projectClick(e) {
 
 
 const appendTodos = (todo) => {
+
+    
+    
     let li = document.createElement("li");
     let removeTodo = document.createElement("button")
     let pname = document.getElementById("currentProject");
+
+    
 
     removeTodo.append("X");
 
@@ -114,6 +119,7 @@ const appendTodos = (todo) => {
 
     document.getElementById("todoHolder").appendChild(li);
 
+    
     
 
 
